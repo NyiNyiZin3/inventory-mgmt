@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StorecatagoryRequest;
-use App\Http\Requests\UpdatecatagoryRequest;
+use App\Http\Requests\StorecategoryRequest;
+use App\Http\Requests\UpdatecategoryRequest;
 use App\Models\Category;
 
 class CategoryController extends Controller
@@ -35,21 +35,24 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorecatagoryRequest  $request
+     * @param  \App\Http\Requests\StorecategoryRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorecatagoryRequest $request)
+    public function store(StorecategoryRequest $request)
     {
-        //
+        $category = new Category;
+        $category->name = $request->name;
+        $category->save();
+        return redirect()->route("categories.index");
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\catagory  $catagory
+     * @param  \App\Models\catory  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(catagory $catagory)
+    public function show(category $category)
     {
         //
     }
@@ -57,10 +60,10 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\catagory  $catagory
+     * @param  \App\Models\category  $catagory
      * @return \Illuminate\Http\Response
      */
-    public function edit(catagory $catagory)
+    public function edit(category $category)
     {
         //
     }
@@ -72,7 +75,7 @@ class CategoryController extends Controller
      * @param  \App\Models\catagory  $catagory
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatecatagoryRequest $request, catagory $catagory)
+    public function update(UpdatecatagoryRequest $request, category $category)
     {
         //
     }
@@ -80,10 +83,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\catagory  $catagory
+     * @param  \App\Models\category  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(catagory $catagory)
+    public function destroy(category $category)
     {
         //
     }
