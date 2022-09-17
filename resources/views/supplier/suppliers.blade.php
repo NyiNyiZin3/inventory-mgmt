@@ -30,9 +30,9 @@
                                     Phone Numbers
                                 </th>
                                 <th scope="col" class="px-6 py-3">
-                                    <span class="sr-only">Edit</span>
+                                    Edit
                                 </th>
-                            </tr>     
+                            </tr>
                         </thead>
                         <tbody>
                             @foreach($suppliers as $supplier)
@@ -45,11 +45,11 @@
                                 </th>
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
                                     @foreach($supplier->supplierPhnos as $supplierPhno)
-                                        {{ $supplierPhno->phone_number }} 
+                                        {{ $supplierPhno->phone_number }}
                                     @endforeach
                                 </th>
                                 <td class="px-6 py-4 text-left">
-                                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 ">
+                                    <a href="{{route('suppliers.edit',['id' => $supplier->id])}}" class="font-medium text-blue-600 dark:text-blue-500 ">
                                         <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
                                     </a>
                                     <a href="#" class="font-medium text-blue-600 dark:text-blue-500 ">
@@ -58,11 +58,11 @@
                                 </td>
                             </tr>
                             @endforeach
-                        </tbody>    
+                        </tbody>
                     </table>
                     <div class="w-2/4 m-auto mt-2">
                         {{ $suppliers->links() }}
-                    </div>    
+                    </div>
                 </div>
             </div>
         </div>
