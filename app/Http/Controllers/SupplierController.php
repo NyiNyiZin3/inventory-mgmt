@@ -60,9 +60,15 @@ class SupplierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
-        //
+        $supplier = Supplier::with(['supplierPhnos'])->find($id);
+        $data=[
+            'supplier'=>$supplier,
+            'supplierPhnos'=>$supplier->supplierPhnos->toArray()
+        ];
+        return view('supplier.editsupplier')->with($data);
+
     }
 
     /**
@@ -74,7 +80,15 @@ class SupplierController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $dbsupplier              = Supplier::find($id);
+        $dbsupplier->name        = $request->name;
+        $dbsupplier->address     = $request->address;
+
+        $phnos = Supplierphno::where("supplier_id",$id)->get();
+        dd($phnos);
+
+        $dbsupplier->save();
+        return to_route('suppliers.index');
     }
 
     /**

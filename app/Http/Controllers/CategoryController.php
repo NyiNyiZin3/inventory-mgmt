@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorecategoryRequest;
 use App\Http\Requests\UpdatecategoryRequest;
+use Illuminate\Http\Request;
 use App\Models\Category;
 
 class CategoryController extends Controller
@@ -65,7 +66,11 @@ class CategoryController extends Controller
      */
     public function edit(category $category)
     {
-        //
+        $data=[
+            'category' => $category
+        ];
+
+        return view("category.editcategory")->with($data);
     }
 
     /**
@@ -75,9 +80,12 @@ class CategoryController extends Controller
      * @param  \App\Models\catagory  $catagory
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatecatagoryRequest $request, category $category)
+    public function update(Request $request, category $category)
     {
-        //
+        $dbcategory       = Category::find($category->id);
+        $dbcategory->name = $request->name;
+        $dbcategory->save();
+        return to_route('categories.index');
     }
 
     /**

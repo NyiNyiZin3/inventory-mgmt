@@ -17,10 +17,14 @@ class Supplier extends Model
      */
     protected $fillable = [
         'name',
-        'address',   
+        'address',
     ];
     public function supplierPhnos()
     {
         return $this->hasMany(SupplierPhno::class);
+    }
+    public function products()
+    {
+        return $this->hasMany(Product::class);
     }
 }
